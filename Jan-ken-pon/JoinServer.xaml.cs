@@ -33,11 +33,11 @@ namespace Jan_ken_pon
             try
             {
                 //var serverIP = IPAddress.Parse(Adres.Text);
-                TcpClient client = new TcpClient(Adres.Text, Convert.ToInt32(Port.Text));
-                NetworkStream ns = client.GetStream();
-                var read = new BinaryReader(ns);
-                var write = new BinaryWriter(ns);
-                write.Write("krzys");
+                Exchange.client = new TcpClient(Adres.Text, Convert.ToInt32(Port.Text));
+                Exchange.ns = Exchange.client.GetStream();
+                Exchange.read = new BinaryReader(Exchange.ns);
+                Exchange.write = new BinaryWriter(Exchange.ns);
+                Exchange.write.Write("krzys");
                 ServerStatus.Content = "Authorisation";
             }
             catch

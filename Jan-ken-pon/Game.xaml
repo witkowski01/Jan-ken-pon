@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Jan_ken_pon"
         mc:Ignorable="d"
-        Title="Game" Height="356.166" Width="321.833">
+        Title="Game" Height="356.166" Width="321.833" Icon="Jen_ken_pon.jpg">
     <Grid>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="10,69,0,0" VerticalAlignment="Top" Width="100"/>
-        <Image x:Name="image1" HorizontalAlignment="Left" Height="100" Margin="182,69,0,0" VerticalAlignment="Top" Width="100"/>
-        <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="53,10,0,0" VerticalAlignment="Top" Width="173"/>
-        <Button x:Name="Stone" Content="Stone" HorizontalAlignment="Left" Margin="20,210,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="Scissors" Content="Scissors" HorizontalAlignment="Left" Margin="115,210,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="Paper" Content="Paper" HorizontalAlignment="Left" Margin="207,210,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="115,249,0,0" VerticalAlignment="Top" Width="75"/>
+        <Image x:Name="Image_my" HorizontalAlignment="Left" Height="100" Margin="10,69,0,0" VerticalAlignment="Top" Width="100"/>
+        <Image x:Name="Image_op" HorizontalAlignment="Left" Height="100" Margin="182,69,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label x:Name="WinLost" Content="Label" HorizontalAlignment="Left" Margin="53,10,0,0" VerticalAlignment="Top" Width="173"/>
+        <Button x:Name="Stone" Content="Stone" HorizontalAlignment="Left" Margin="20,210,0,0" VerticalAlignment="Top" Width="75" Click="Stone_Click"/>
+        <Button x:Name="Scissors" Content="Scissors" HorizontalAlignment="Left" Margin="115,210,0,0" VerticalAlignment="Top" Width="75" Click="Scissors_Click"/>
+        <Button x:Name="Paper" Content="Paper" HorizontalAlignment="Left" Margin="207,210,0,0" VerticalAlignment="Top" Width="75" Click="Paper_Click"/>
+        <Button x:Name="Next" Content="Next round" HorizontalAlignment="Left" Margin="115,249,0,0" VerticalAlignment="Top" Width="75" Click="Next_Click"/>
 
     </Grid>
 </Window>

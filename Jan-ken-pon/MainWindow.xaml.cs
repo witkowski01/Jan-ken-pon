@@ -29,13 +29,19 @@ namespace Jan_ken_pon
         private void StartServer_Click(object sender, RoutedEventArgs e)
         {
             var server = new Server();
-            server.ShowDialog();
+            server.Show();
         }
 
         private void JoinServer_Click(object sender, RoutedEventArgs e)
         {
             var server = new JoinServer();
-            server.ShowDialog();
+            server.Show();
+        }
+
+        private void StartGame_Click(object sender, RoutedEventArgs e)
+        {
+            var game = new Game();
+            game.Show();
         }
     }
 

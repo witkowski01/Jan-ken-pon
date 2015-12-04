@@ -42,19 +42,19 @@ namespace Jan_ken_pon
                 MessageBox.Show("Wrong IP adress");
                 return;
             }
-            var server = new TcpListener(serverIP, Convert.ToInt32(Port.Text));
-            TcpClient client = null;
+            Exchange.server = new TcpListener(serverIP, Convert.ToInt32(Port.Text));
+            Exchange.client = null;
 
             try
             {
-                server.Start();
+                Exchange.server.Start();
                 ServerStatus.Content = "Waiting for connection";
-                client = server.AcceptTcpClient();
-                NetworkStream ns = client.GetStream();
+                Exchange.client = Exchange.server.AcceptTcpClient();
+                Exchange.ns = Exchange.client.GetStream();
                 ServerStatus.Content = "Client try to connect";
-                var read = new BinaryReader(ns);
-                var write = new BinaryWriter(ns);
-                if (read.ReadString() == "krzys")
+                Exchange.read = new BinaryReader(Exchange.ns);
+                Exchange.write = new BinaryWriter(Exchange.ns);
+                if (Exchange.read.ReadString() == "krzys")
                 {
                     ServerStatus.Content = "Connection succesfull";
                     //coś zamiast background workera
@@ -62,8 +62,8 @@ namespace Jan_ken_pon
                 else
                 {
                     ServerStatus.Content = "Connection failure";
-                    client.Close();
-                    server.Stop();
+                    Exchange.client.Close();
+                    Exchange.server.Stop();
                     ServerStatus.Content = "No connection";
                 }
             }

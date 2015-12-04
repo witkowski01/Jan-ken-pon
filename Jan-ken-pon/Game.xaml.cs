@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,6 +24,131 @@ namespace Jan_ken_pon
         public Game()
         {
             InitializeComponent();
+            Task.Factory.StartNew(Read);
+            WhatIChoose = WhatOpChoose = 0;
+        }
+
+        public void ButtonStatusChange(bool status)
+        {
+            Stone.IsEnabled = Paper.IsEnabled = Scissors.IsEnabled = status;
+            Next.IsEnabled = !status;
+        }
+
+        private bool ChooseYet = false;
+        private byte WhatIChoose, WhatOpChoose;
+        private void Read()
+        {
+            while (true)
+            {
+                if (ChooseYet)
+                {
+                    App.Current.Dispatcher.Invoke(() =>
+                    {
+                        string temp = Exchange.read.ReadString();
+                        if (temp == "Stone")
+                        {
+                            Image_op.Source = new BitmapImage(new Uri(new FileInfo(@"Stone.jpg").FullName));
+                            WhatOpChoose = 1;
+                            runGame();
+                            ChooseYet = false;
+                        }
+                        else if (temp == "Scissors")
+                        {
+                            Image_op.Source = new BitmapImage(new Uri(new FileInfo(@"Scissors.png").FullName));
+                            WhatOpChoose = 2;
+                            runGame();
+                            ChooseYet = false;
+                        }
+                        else if (temp == "Paper")
+                        {
+                            Image_op.Source = new BitmapImage(new Uri(new FileInfo(@"Paper.jpg").FullName));
+                            WhatOpChoose = 3;
+                            runGame();
+                            ChooseYet = false;
+                        }
+                    });
+
+
+                }
+
+                Thread.Sleep(100);
+            }
+
+        }
+
+        private void Stone_Click(object sender, RoutedEventArgs e)
+        {
+            Exchange.write.Write("Stone");
+            Image_my.Source = new BitmapImage(new Uri(new FileInfo(@"Stone.jpg").FullName));
+            WhatIChoose = 1;
+            ChooseYet = true;
+            ButtonStatusChange(false);
+
+        }
+
+        private void Scissors_Click(object sender, RoutedEventArgs e)
+        {
+            Exchange.write.Write("Scissors");
+            Image_my.Source = new BitmapImage(new Uri(new FileInfo(@"Scissors.png").FullName));
+            WhatIChoose = 2;
+            ChooseYet = true;
+            ButtonStatusChange(false);
+        }
+
+        private void Paper_Click(object sender, RoutedEventArgs e)
+        {
+            Exchange.write.Write("Paper");
+            Image_my.Source = new BitmapImage(new Uri(new FileInfo(@"Paper.jpg").FullName));
+            WhatIChoose = 3;
+            ChooseYet = true;
+            ButtonStatusChange(false);
+        }
+
+        private void runGame()
+        {
+            if (WhatIChoose == 1 && WhatOpChoose == 1)
+            {
+                WinLost.Content = "Draw";
+            }
+            else if (WhatIChoose == 2 && WhatOpChoose == 2)
+            {
+                WinLost.Content = "Draw";
+            }
+            else if (WhatIChoose == 3 && WhatOpChoose == 3)
+            {
+                WinLost.Content = "Draw";
+            }
+            else if (WhatIChoose == 1 && WhatOpChoose == 2)
+            {
+                WinLost.Content = "You win";
+            }
+            else if (WhatIChoose == 1 && WhatOpChoose == 3)
+            {
+                WinLost.Content = "You lost";
+            }
+            else if (WhatIChoose == 2 && WhatOpChoose == 1)
+            {
+                WinLost.Content = "You lost";
+            }
+            else if (WhatIChoose == 2 && WhatOpChoose == 3)
+            {
+                WinLost.Content = "You win";
+            }
+            else if (WhatIChoose == 3 && WhatOpChoose == 1)
+            {
+                WinLost.Content = "You win";
+            }
+            else if (WhatIChoose == 3 && WhatOpChoose == 2)
+            {
+                WinLost.Content = "You lost";
+            }
+        }
+
+        private void Next_Click(object sender, RoutedEventArgs e)
+        {
+            Image_op.Source = Image_my.Source = null;
+            WinLost.Content = " ";
+            ButtonStatusChange(true);
         }
     }
 }
