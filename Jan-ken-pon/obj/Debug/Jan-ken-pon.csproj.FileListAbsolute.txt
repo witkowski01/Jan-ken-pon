@@ -17,7 +17,6 @@ C:\Users\witko_000\Documents\GitHub\Jan-ken-pon\Jan-ken-pon\Jan-ken-pon\obj\Debu
 C:\Users\witko_000\Documents\GitHub\Jan-ken-pon\Jan-ken-pon\Jan-ken-pon\obj\Debug\Jan-ken-pon.csproj.GenerateResource.Cache
 C:\Users\witko_000\Documents\GitHub\Jan-ken-pon\Jan-ken-pon\Jan-ken-pon\obj\Debug\Jan-ken-pon.exe
 C:\Users\witko_000\Documents\GitHub\Jan-ken-pon\Jan-ken-pon\Jan-ken-pon\obj\Debug\Jan-ken-pon.pdb
-C:\Users\witko_000\Documents\GitHub\Jan-ken-pon\Jan-ken-pon\Jan-ken-pon\obj\Debug\Jan-ken-pon.csprojResolveAssemblyReference.cache
 C:\Users\witko_000\Documents\GitHub\Jan-ken-pon\Jan-ken-pon\bin\Debug\Jan-ken-pon.exe.config
 C:\Users\witko_000\Documents\GitHub\Jan-ken-pon\Jan-ken-pon\bin\Debug\Jan-ken-pon.exe
 C:\Users\witko_000\Documents\GitHub\Jan-ken-pon\Jan-ken-pon\bin\Debug\Jan-ken-pon.pdb

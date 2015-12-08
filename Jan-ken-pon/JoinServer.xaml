@@ -13,6 +13,7 @@
         <Label x:Name="label" Content="Adres serwera" HorizontalAlignment="Left" Margin="34,20,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label1" Content="Port serwera" HorizontalAlignment="Left" Margin="34,83,0,0" VerticalAlignment="Top"/>
         <Label x:Name="ServerStatus" Content="" HorizontalAlignment="Left" Margin="197,28,0,0" VerticalAlignment="Top" Width="77"/>
-
+        <Button x:Name="Stop" Content="Stop" HorizontalAlignment="Left" Margin="197,117,0,0" VerticalAlignment="Top" Width="75" Click="Stop_Click"/>
+        
     </Grid>
 </Window>

@@ -9,7 +9,7 @@
     <Grid>
         <Image x:Name="Image_my" HorizontalAlignment="Left" Height="100" Margin="10,69,0,0" VerticalAlignment="Top" Width="100"/>
         <Image x:Name="Image_op" HorizontalAlignment="Left" Height="100" Margin="182,69,0,0" VerticalAlignment="Top" Width="100"/>
-        <Label x:Name="WinLost" Content="Label" HorizontalAlignment="Left" Margin="53,10,0,0" VerticalAlignment="Top" Width="173"/>
+        <Label x:Name="WinLost" Content="" HorizontalAlignment="Left" Margin="53,10,0,0" VerticalAlignment="Top" Width="173"/>
         <Button x:Name="Stone" Content="Stone" HorizontalAlignment="Left" Margin="20,210,0,0" VerticalAlignment="Top" Width="75" Click="Stone_Click"/>
         <Button x:Name="Scissors" Content="Scissors" HorizontalAlignment="Left" Margin="115,210,0,0" VerticalAlignment="Top" Width="75" Click="Scissors_Click"/>
         <Button x:Name="Paper" Content="Paper" HorizontalAlignment="Left" Margin="207,210,0,0" VerticalAlignment="Top" Width="75" Click="Paper_Click"/>

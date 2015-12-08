@@ -25,11 +25,31 @@ namespace Jan_ken_pon
         public JoinServer()
         {
             InitializeComponent();
+            joinServer = this;
+        }
+
+        public static JoinServer joinServer;
+        private void Stop_Click(object sender, RoutedEventArgs e)
+        {
+            Exchange.write.Write("krzysbaybay");
+            Exchange.client.Close();
+            Stop.IsEnabled = false;
+            Start.IsEnabled = true;
+
+            ServerStatus.Content = "No connection";
+            if (MainWindow.game != null)
+            {
+                ServerStatus.Content = "Dissconnect";
+                MainWindow.game.Close();
+                Stop.IsEnabled = false;
+                Start.IsEnabled = true;
+            }
         }
 
         private void Start_Click(object sender, RoutedEventArgs e)
         {
-
+            Stop.IsEnabled = true;
+            Start.IsEnabled = false;
             try
             {
                 //var serverIP = IPAddress.Parse(Adres.Text);
@@ -42,7 +62,9 @@ namespace Jan_ken_pon
             }
             catch
             {
-                ServerStatus.Content = "Server KAbumm!  Krzys jest smutny";
+                ServerStatus.Content = "Server KABumm!";
+                Stop.IsEnabled = false;
+                Start.IsEnabled = true;
             }
 
         }

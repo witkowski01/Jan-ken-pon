@@ -26,6 +26,8 @@ namespace Jan_ken_pon
             InitializeComponent();
         }
 
+        public static Game game;
+
         private void StartServer_Click(object sender, RoutedEventArgs e)
         {
             var server = new Server();
@@ -40,7 +42,7 @@ namespace Jan_ken_pon
 
         private void StartGame_Click(object sender, RoutedEventArgs e)
         {
-            var game = new Game();
+            game = new Game();
             game.Show();
         }
     }

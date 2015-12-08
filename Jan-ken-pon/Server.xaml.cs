@@ -25,13 +25,39 @@ namespace Jan_ken_pon
         public Server()
         {
             InitializeComponent();
+            server = this;
+        }
+
+        public static Server server;
+        private void Stop_Click(object sender, RoutedEventArgs e)
+        {
+            Stop.IsEnabled = false;
+            Start.IsEnabled = true;
+            try
+            {
+                Exchange.write.Write("krzysbaybay");
+                Exchange.client.Close();
+                Exchange.server.Stop();
+                ServerStatus.Content = "No connection";
+                if (MainWindow.game != null)
+                {
+                    MainWindow.game.Close();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("KABUM!!!");
+                Stop.IsEnabled = false;
+                Start.IsEnabled = true;
+            }
+
         }
 
         private void Start_Click(object sender, RoutedEventArgs e)
         {
-            var ram = new Microsoft.VisualBasic.Devices.ComputerInfo().TotalPhysicalMemory;
-
-            string port, adres;
+            //var ram = new Microsoft.VisualBasic.Devices.ComputerInfo().TotalPhysicalMemory;
+            Stop.IsEnabled = true;
+            Start.IsEnabled = false;
             IPAddress serverIP;
             try
             {
@@ -40,6 +66,8 @@ namespace Jan_ken_pon
             catch (Exception)
             {
                 MessageBox.Show("Wrong IP adress");
+                Stop.IsEnabled = false;
+                Start.IsEnabled = true;
                 return;
             }
             Exchange.server = new TcpListener(serverIP, Convert.ToInt32(Port.Text));
@@ -70,7 +98,10 @@ namespace Jan_ken_pon
             catch
             {
                 ServerStatus.Content = "Server KABUMMMM!";
+                Stop.IsEnabled = false;
+                Start.IsEnabled = true;
             }
         }
+
     }
 }

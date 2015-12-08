@@ -28,6 +28,25 @@ namespace Jan_ken_pon
             WhatIChoose = WhatOpChoose = 0;
         }
 
+        private void Dissconnect()
+        {
+            Image_my.Source = null;
+            Image_op.Source = null;
+            MessageBox.Show("Server is currently down, or opponent disconnect");
+            if (JoinServer.joinServer != null)
+            {
+                JoinServer.joinServer.ServerStatus.Content = "Dissconnect";
+                JoinServer.joinServer.Stop.IsEnabled = false;
+                JoinServer.joinServer.Start.IsEnabled = true;
+            }
+            if (Server.server != null)
+            {
+                Server.server.ServerStatus.Content = "Dissconnect";
+                Server.server.Stop.IsEnabled = false;
+                Server.server.Start.IsEnabled = true;
+            }
+            this.Close();
+        }
         public void ButtonStatusChange(bool status)
         {
             Stone.IsEnabled = Paper.IsEnabled = Scissors.IsEnabled = status;
@@ -66,10 +85,16 @@ namespace Jan_ken_pon
                             runGame();
                             ChooseYet = false;
                         }
+                        else if (temp == "krzysbaybay")
+                        {
+                            Dissconnect();
+                        }
+
                     });
 
 
                 }
+
 
                 Thread.Sleep(100);
             }
@@ -78,30 +103,55 @@ namespace Jan_ken_pon
 
         private void Stone_Click(object sender, RoutedEventArgs e)
         {
-            Exchange.write.Write("Stone");
-            Image_my.Source = new BitmapImage(new Uri(new FileInfo(@"Stone.jpg").FullName));
-            WhatIChoose = 1;
-            ChooseYet = true;
-            ButtonStatusChange(false);
+            try
+            {
+                Exchange.write.Write("Stone");
+                Image_my.Source = new BitmapImage(new Uri(new FileInfo(@"Stone.jpg").FullName));
+                WhatIChoose = 1;
+                ChooseYet = true;
+                ButtonStatusChange(false);
+            }
+            catch (Exception)
+            {
+                Dissconnect();
+            }
+
 
         }
 
         private void Scissors_Click(object sender, RoutedEventArgs e)
         {
-            Exchange.write.Write("Scissors");
-            Image_my.Source = new BitmapImage(new Uri(new FileInfo(@"Scissors.png").FullName));
-            WhatIChoose = 2;
-            ChooseYet = true;
-            ButtonStatusChange(false);
+
+            try
+            {
+                Exchange.write.Write("Scissors");
+                Image_my.Source = new BitmapImage(new Uri(new FileInfo(@"Scissors.png").FullName));
+                WhatIChoose = 2;
+                ChooseYet = true;
+                ButtonStatusChange(false);
+            }
+            catch (Exception)
+            {
+                Dissconnect();
+            }
+
         }
 
         private void Paper_Click(object sender, RoutedEventArgs e)
         {
-            Exchange.write.Write("Paper");
-            Image_my.Source = new BitmapImage(new Uri(new FileInfo(@"Paper.jpg").FullName));
-            WhatIChoose = 3;
-            ChooseYet = true;
-            ButtonStatusChange(false);
+            try
+            {
+                Exchange.write.Write("Paper");
+                Image_my.Source = new BitmapImage(new Uri(new FileInfo(@"Paper.jpg").FullName));
+                WhatIChoose = 3;
+                ChooseYet = true;
+                ButtonStatusChange(false);
+            }
+            catch (Exception)
+            {
+                Dissconnect();
+            }
+
         }
 
         private void runGame()
