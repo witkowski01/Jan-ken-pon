@@ -27,6 +27,7 @@ namespace Jan_ken_pon
         }
 
         public static Game game;
+        public static Chat chat;
 
         private void StartServer_Click(object sender, RoutedEventArgs e)
         {
@@ -44,6 +45,12 @@ namespace Jan_ken_pon
         {
             game = new Game();
             game.Show();
+        }
+
+        private void StartChat_Click(object sender, RoutedEventArgs e)
+        {
+            chat = new Chat();
+            chat.Show();
         }
     }
 

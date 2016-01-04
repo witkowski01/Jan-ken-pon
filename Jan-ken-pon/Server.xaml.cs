@@ -38,6 +38,8 @@ namespace Jan_ken_pon
                 Exchange.write.Write("krzysbaybay");
                 Exchange.client.Close();
                 Exchange.server.Stop();
+                Exchange.clientChat.Close();
+                Exchange.serverChat.Stop();
                 ServerStatus.Content = "No connection";
                 if (MainWindow.game != null)
                 {
@@ -71,17 +73,25 @@ namespace Jan_ken_pon
                 return;
             }
             Exchange.server = new TcpListener(serverIP, Convert.ToInt32(Port.Text));
+            Exchange.serverChat = new TcpListener(serverIP, Convert.ToInt32(Port.Text) + 1);
             Exchange.client = null;
+            Exchange.clientChat = null;
+
 
             try
             {
                 Exchange.server.Start();
+                Exchange.serverChat.Start();
                 ServerStatus.Content = "Waiting for connection";
                 Exchange.client = Exchange.server.AcceptTcpClient();
+                Exchange.clientChat = Exchange.serverChat.AcceptTcpClient();
                 Exchange.ns = Exchange.client.GetStream();
+                Exchange.nsChat = Exchange.clientChat.GetStream();
                 ServerStatus.Content = "Client try to connect";
                 Exchange.read = new BinaryReader(Exchange.ns);
+                Exchange.readChat = new BinaryReader(Exchange.nsChat);
                 Exchange.write = new BinaryWriter(Exchange.ns);
+                Exchange.writeChat = new BinaryWriter(Exchange.nsChat);
                 if (Exchange.read.ReadString() == "krzys")
                 {
                     ServerStatus.Content = "Connection succesfull";
@@ -92,6 +102,23 @@ namespace Jan_ken_pon
                     ServerStatus.Content = "Connection failure";
                     Exchange.client.Close();
                     Exchange.server.Stop();
+                    Exchange.clientChat.Close();
+                    Exchange.serverChat.Stop();
+                    ServerStatus.Content = "No connection";
+                }
+
+                if (Exchange.readChat.ReadString() == "krzys")
+                {
+                    ServerStatus.Content = "Connection succesfull";
+                    //coś zamiast background workera
+                }
+                else
+                {
+                    ServerStatus.Content = "Connection failure";
+                    Exchange.clientChat.Close();
+                    Exchange.serverChat.Stop();
+                    Exchange.clientChat.Close();
+                    Exchange.serverChat.Stop();
                     ServerStatus.Content = "No connection";
                 }
             }

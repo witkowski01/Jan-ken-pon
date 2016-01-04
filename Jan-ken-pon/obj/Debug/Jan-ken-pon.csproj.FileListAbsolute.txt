@@ -36,3 +36,5 @@ C:\Users\witko_000\Documents\GitHub\Jan-ken-pon\Jan-ken-pon\obj\Debug\Jan_ken_po
 C:\Users\witko_000\Documents\GitHub\Jan-ken-pon\Jan-ken-pon\obj\Debug\Jan-ken-pon.csproj.GenerateResource.Cache
 C:\Users\witko_000\Documents\GitHub\Jan-ken-pon\Jan-ken-pon\obj\Debug\Jan-ken-pon.exe
 C:\Users\witko_000\Documents\GitHub\Jan-ken-pon\Jan-ken-pon\obj\Debug\Jan-ken-pon.pdb
+C:\Users\witko_000\Documents\GitHub\Jan-ken-pon\Jan-ken-pon\obj\Debug\Chat.baml
+C:\Users\witko_000\Documents\GitHub\Jan-ken-pon\Jan-ken-pon\obj\Debug\Chat.g.cs

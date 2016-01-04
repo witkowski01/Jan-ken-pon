@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-C:\Users\witko_000\Documents\GitHub\Jan-ken-pon\Jan-ken-pon\obj\Debug\
+C:\Users\witko_000\Documents\GitHub\Jan-ken-pon\Jan-ken-pon\obj\Release\
 Jan_ken_pon
 none
 false
-DEBUG;TRACE
+TRACE
 C:\Users\witko_000\Documents\GitHub\Jan-ken-pon\Jan-ken-pon\App.xaml
 51287968934
 
-14-654699672
+101826816869
 14934750342
 Chat.xaml;Game.xaml;JoinServer.xaml;MainWindow.xaml;Server.xaml;
 

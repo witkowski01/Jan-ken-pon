@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -33,6 +34,7 @@ namespace Jan_ken_pon
         {
             Exchange.write.Write("krzysbaybay");
             Exchange.client.Close();
+            Exchange.clientChat.Close();
             Stop.IsEnabled = false;
             Start.IsEnabled = true;
 
@@ -57,7 +59,15 @@ namespace Jan_ken_pon
                 Exchange.ns = Exchange.client.GetStream();
                 Exchange.read = new BinaryReader(Exchange.ns);
                 Exchange.write = new BinaryWriter(Exchange.ns);
+
+                Exchange.clientChat = new TcpClient(Adres.Text, Convert.ToInt32(Port.Text)+1);
+                Exchange.nsChat = Exchange.clientChat.GetStream();
+                Exchange.readChat = new BinaryReader(Exchange.nsChat);
+                Exchange.writeChat = new BinaryWriter(Exchange.nsChat);
+
                 Exchange.write.Write("krzys");
+                Exchange.writeChat.Write("krzys");
+                
                 ServerStatus.Content = "Authorisation";
             }
             catch

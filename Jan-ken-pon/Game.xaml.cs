@@ -45,6 +45,7 @@ namespace Jan_ken_pon
                 Server.server.Stop.IsEnabled = false;
                 Server.server.Start.IsEnabled = true;
             }
+            MainWindow.chat.Close();
             this.Close();
         }
         public void ButtonStatusChange(bool status)
@@ -61,9 +62,10 @@ namespace Jan_ken_pon
             {
                 if (ChooseYet)
                 {
+                    string temp = Exchange.read.ReadString();
                     App.Current.Dispatcher.Invoke(() =>
                     {
-                        string temp = Exchange.read.ReadString();
+                        
                         if (temp == "Stone")
                         {
                             Image_op.Source = new BitmapImage(new Uri(new FileInfo(@"Stone.jpg").FullName));

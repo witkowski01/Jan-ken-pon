@@ -16,5 +16,11 @@ namespace Jan_ken_pon
        public static NetworkStream ns;
        public static BinaryReader read;
        public static BinaryWriter write;
+
+       public static TcpListener serverChat;
+       public static TcpClient clientChat;
+       public static NetworkStream nsChat;
+       public static BinaryReader readChat;
+       public static BinaryWriter writeChat;
     }
 }
